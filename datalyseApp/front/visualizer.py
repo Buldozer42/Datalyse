@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from back.classes.Predictor import Predictor
 
+# This class allows to visualize the data in a dataset. It handle all graphical representations in the app
 class Visualizer:
     def __init__(self, dataframe=None, pcaDf=None):
         self.df = dataframe
@@ -109,4 +110,8 @@ class Visualizer:
     def __showClustering(self, labels, centroids):
         sns.scatterplot(x=self.pcaDf[:, 0], y=self.pcaDf[:, 1], hue=labels, palette='viridis', s=50)
         sns.scatterplot(x=centroids[:, 0], y=centroids[:, 1], s=100, c='red', marker='X', label='Centroids')
+        st.pyplot()
+
+    def showElbow(self, scores, max_k):
+        sns.lineplot(x=range(2, max_k), y=scores)
         st.pyplot()

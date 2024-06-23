@@ -10,6 +10,7 @@ if 'shared_df' in st.session_state :
         pca_manager = DataPCAManager()
         vs = Visualizer(st.session_state['shared_df'])
 
+        st.write('## Réduction de dimensions avec PCA')
         st.write('Cette page vous permet de réaliser une réduction de dimensions avec PCA avant de pouvoir réaliser un clustering')   
         st.write("Choisissez le nombre de composantes principales, c'est-à-dire le nombre de dimensions sur lesquelles vous souhaitez réduire vos données")    
        
@@ -26,6 +27,17 @@ if 'shared_df' in st.session_state :
                 vs.showPCA()
                 if n_components >= 3:
                     vs.showPCA3D()
+        
+        st.write('## Méthode du coude')
+        st.write('Cette méthode permet de trouver le nombre optimal de clusters à utiliser pour le clustering')
+        if st.button("Lancer la méthode du coude", type="primary"):
+            st.write('Résultat pour l\'indice de Calinski-Harabasz')
+            scores, max_k = pca_manager.elbows(st.session_state['shared_df'], 1)
+            vs.showElbow(scores, max_k)
+        
+            st.write('Résultat pouri l\'indice de Davies-Bouldin')
+            scores, max_k = pca_manager.elbows(st.session_state['shared_df'], 2)
+            vs.showElbow(scores, max_k)
     else:
         st.error("Les données n'ont pas été normalisées")
 else:

@@ -4,13 +4,10 @@ from sklearn.impute import KNNImputer
 # This class allows to manage missing values in a dataset in different ways
 class MissingValueManager:
 
-    # First missing values management method
     # This method will delete all the rows with missing values
     def deleteMissingValues(self, data):
         return data.dropna()
     
-
-    # Second missing values management method
     # Here, we will fill the missing values using the mean, mode or median of each column
     ## method: 'mean', 'mode' or 'median', allows to choose the method to fill the missing values
     def fillMissingValues(self, data, method):
@@ -32,8 +29,6 @@ class MissingValueManager:
                 return data
         return
     
-
-    # Third missing values management method
     # This method will fill the missing values using the KNN algorithm
     def fillMissingValuesKNN(self, data):
 

@@ -1,7 +1,7 @@
 import streamlit as st
 
 def menu():
-    # Show a navigation menu for authenticated users
+    # Show a dynamic navigation menu
     st.sidebar.page_link("app.py", label="Accueil")
     if 'status' in st.session_state:
         st.sidebar.page_link("pages/visualisation.py", label="Visualisation")

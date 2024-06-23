@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+# This class allows to manage the file uploaded by the user
 class FileManager:
     def __init__(self):
         self.uploaded_file = None

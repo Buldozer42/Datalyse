@@ -40,11 +40,6 @@ class DataNormalizer:
     # This method will normalise values using the z-score
     def normaliserValuesZScore(self, data):
         return self.returnData(stats.zscore(data), data.columns)
-    
-    # This method will normalise values using the quantile transformer
-    def quantileTransformer(self, data):
-        transformer = QuantileTransformer(n_quantiles=10, random_state=0)
-        return self.returnData(transformer.fit_transform(data), data.columns)
      
     def returnData(self, data, columns):
         return pd.DataFrame(data, columns=columns)    

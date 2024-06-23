@@ -4,7 +4,7 @@ from sklearn.linear_model import LogisticRegression
 # This class allows to use some prediction algorithms (classification and regression)
 class Predictor:
 
-    # First, the KNN algorithm (here, k is the number of neighbors, and target is the target column name)
+    # KNN algorithm (here, k is the number of neighbors, and target is the target column name)
     def knnPrediction(self, data, k, target):
         data = self.floatToIntConversion(data)
         X = data.drop(target, axis=1)
@@ -22,7 +22,7 @@ class Predictor:
         return knn, nfeatures, nsamples, score, predict
     
 
-    # Second, logistic regression (here, target is the target column name, iterations is the number of iterations to perform)
+    # Logistic regression (here, target is the target column name, iterations is the number of iterations to perform)
     def logisticRegressionPrediction(self, data, target, iterations):
         data = self.floatToIntConversion(data)
         X = data.drop(target, axis=1)
@@ -39,6 +39,6 @@ class Predictor:
 
         return logreg, nfeatures, score, predict
 
-    # This method allows to convert every float value in df to an int value
+    # Allows to convert every float value in df to an int value
     def floatToIntConversion(self,data):
         return data.astype(int)
