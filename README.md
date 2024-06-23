@@ -69,7 +69,7 @@ pip freeze
 Start the application  
 
 ```bash
-python -m streamlit run .\front\app.py
+python -m streamlit run .\datalyseApp\app.py
 ```
 
 ## Authors  
