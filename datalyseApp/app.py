@@ -17,10 +17,10 @@ if file_manager.df is not None:
 
     if st.button("Visualisation", type="primary"):
         st.switch_page("pages/visualisation.py")
-    if st.button("Prédiction", type="primary"):
-        st.switch_page("pages/prediction.py")
     if st.button("Normalisation", type="primary"):
         st.switch_page("pages/normalizer.py")
+    if st.button("Prédiction", type="primary"):
+        st.switch_page("pages/prediction.py")
 
     st.write("### Informations sur le fichier")
     file_manager.showFileInfo()
