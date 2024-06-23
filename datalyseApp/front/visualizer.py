@@ -33,7 +33,7 @@ class Visualizer:
         if columns is None:
             columns = self.df.columns
         
-        for col in self.df.columns:
+        for col in columns:
             st.write('Boxplot de la colonne : ', col)
             sns.boxplot(x=self.df[col])
             st.pyplot()
