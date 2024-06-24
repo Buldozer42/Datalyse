@@ -10,6 +10,11 @@ if 'shared_df' in st.session_state:
     mvm = MissingValueManager()
     st.write('Cette page permet de normaliser les données importées.')
 
+    if st.button("Remplacer les valeurs catégorielles par des valeurs numériques", type="primary"):
+        st.session_state['shared_df'], dict = mvm.replaceString(st.session_state['shared_df'])
+        st.write('Les valeurs catégorielles ont été remplacées par des valeurs numériques.')
+        st.write(dict)
+
     missing_opotion = st.selectbox(
         "Comment souhaitez-vous gérer les valeurs manquantes ?",
         ['Supprimer les lignes', 'Remplacer par la moyenne', 'Remplacer par le mode', 'Remplacer par la médiane', 'Remplacer par KNN'],

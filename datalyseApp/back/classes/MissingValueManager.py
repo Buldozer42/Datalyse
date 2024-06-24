@@ -41,3 +41,12 @@ class MissingValueManager:
         knnData = pd.DataFrame(knnData, columns=data.columns)
 
         return knnData
+    
+    # This method will replace the string values with numerical values
+    def replaceString(self, data):
+        mapping_dict = {}
+        for col in data.columns:
+            if data[col].dtype == 'object':
+                data[col], mapping = pd.factorize(data[col])
+                mapping_dict[col] = list(mapping)
+        return data, mapping_dict
