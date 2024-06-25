@@ -40,9 +40,12 @@ class DataNormalizer:
     # This method will normalise values using the z-score
     def normaliserValuesZScore(self, data):
         return self.returnData(stats.zscore(data), data.columns)
+    
+    def removeGivenColumns(self, data, columns):
+        return data.drop(columns, axis=1)
      
     def returnData(self, data, columns):
-        return pd.DataFrame(data, columns=columns)    
+        return pd.DataFrame(data, columns=columns)
     
     def getMethods(self):
         return ['Min/Max', 'Log Scaling', 'Max Abs Scaler', 'Robust Scaler', 'Standard Scaler','Z-Score']

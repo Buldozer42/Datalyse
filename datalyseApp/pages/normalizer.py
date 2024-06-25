@@ -15,6 +15,17 @@ if 'shared_df' in st.session_state:
         st.write('Les valeurs catégorielles ont été remplacées par des valeurs numériques.')
         st.write(dict)
 
+    columns_options = st.multiselect(
+        "Si vous souhaitez supprimer des colonnes, veuillez les sélectionner ici :",
+        st.session_state['shared_df'].columns,
+        default=None,
+        placeholder="Sélectionnez les colonnes à supprimer...",
+    )
+    if st.button("Supprimer les colonnes", type="primary"):
+        if columns_options:
+            st.session_state['shared_df'] = dn.removeGivenColumns(st.session_state['shared_df'], columns_options)
+            st.write('Les colonnes sélectionnées ont été supprimées.')
+
     missing_opotion = st.selectbox(
         "Comment souhaitez-vous gérer les valeurs manquantes ?",
         ['Supprimer les lignes', 'Remplacer par la moyenne', 'Remplacer par le mode', 'Remplacer par la médiane', 'Remplacer par KNN'],
@@ -44,8 +55,8 @@ if 'shared_df' in st.session_state:
         placeholder="Choisissez une méthode...",
     )
 
-    if st.button("Normaliser les données", type="primary"):
-        if option:
+    if option:
+        if st.button("Normaliser les données", type="primary"):
             if option == 'Min/Max':
                 st.session_state['normalize_df'] = dn.MinMax(st.session_state['shared_df'])
             elif option == 'Log Scaling':
